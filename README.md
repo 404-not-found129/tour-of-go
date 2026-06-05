@@ -43,4 +43,8 @@ Go - The programming language used.
 Vim / Konsole - Developed in a Linux terminal environment.
 
 💡 Motivation
-This was built as a personal project to solidify core Go concepts and create an easy-to-read reference guide right in the terminal.
+This was built as a personal project to solidify core Go concepts and create an easy-to-read reference guide right in the terminal with vim
+
+📄 Sources
+https://docs.fyne.io/
+https://stackoverflow.com/questions/77975268/how-to-change-the-background-color-in-fyne-golang-gui

@@ -31,11 +31,11 @@ Open your terminal and navigate to the directory containing main.go.
 Run the following command to compile and execute the program on the fly:
 
 Bash
-go run main.go
+go run tour.go
 Alternatively, if you want to build an executable binary:
 
 Bash
-go build -o tour-of-go main.go
+go build -o tour-of-go tour.tour-of-go
 ./tour-of-go
 🛠️ Built With
 Go - The programming language used.

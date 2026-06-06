@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)https://jackson-tour-of-go.netlify.app/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tour of Go by Jackson</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #1a1a2e;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      background: rgba(30, 30, 30, 0.88);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 640px;
+      padding: 32px 36px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+    }
+
+    #gopher-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    #gopher-wrap img {
+      width: 160px;
+      height: 160px;
+      object-fit: contain;
+    }
+
+    #step-display {
+      background: rgba(255,255,255,0.04);
+      border-radius: 8px;
+      padding: 20px;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      min-height: 200px;
+    }
+
+    #step-display strong {
+      color: #7ec8e3;
+      font-size: 1.05rem;
+    }
+
+    .progress-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    #progress-label {
+      font-size: 0.78rem;
+      color: #888;
+      text-align: right;
+    }
+
+    #progress-bar-outer {
+      background: rgba(255,255,255,0.1);
+      border-radius: 6px;
+      height: 8px;
+      overflow: hidden;
+    }
+
+    #progress-bar-inner {
+      height: 100%;
+      background: #5b9bd5;
+      border-radius: 6px;
+      transition: width 0.25s ease;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-start;
+    }
+
+    button {
+      padding: 9px 22px;
+      border-radius: 7px;
+      border: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.15s, background 0.15s;
+    }
+
+    #btn-prev, #btn-next {
+      background: #5b9bd5;
+      color: #fff;
+    }
+
+    #btn-prev:disabled, #btn-next:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+
+    #btn-prev:not(:disabled):hover, #btn-next:not(:disabled):hover {
+      background: #4a87bf;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Tour of Go by Jackson</h1>
+
+    <div id="gopher-wrap" style="display: flex;">
+      <img src="./Tour of Go by Jackson website_files/gopher.png" alt="Go Gopher" id="gopher">
+    </div>
+
+    <div id="step-display"><strong>1: Introduction</strong>
+
+Welcome to the Tour of Go by Jackson.
+
+Made by 404-not-found129 on GitHub, inspired by https://go.dev/tour
+
+This guide covers the core concepts of Go in a simple, readable format.</div>
+
+    <div class="progress-wrap">
+      <div id="progress-label">Step 1 of 21</div>
+      <div id="progress-bar-outer">
+        <div id="progress-bar-inner" style="width: 4.7619%;"></div>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button id="btn-prev" disabled="">Back</button>
+      <button id="btn-next">Next</button>
+    </div>
+  </div>
+
+  <script>
+    const steps = [
+      {
+        title: "1: Introduction",
+        body: `Welcome to the Tour of Go by Jackson.\n\nMade by 404-not-found129 on GitHub, inspired by https://go.dev/tour\n\nThis guide covers the core concepts of Go in a simple, readable format.`
+      },
+      {
+        title: "2: Packages",
+        body: `Every Go program starts with a package declaration. The main package is the entry point.\n\nexample:\n\npackage main\n\nimport "fmt"\n\nfunc main() {\n\tfmt.Println("Hello, World!")\n}`
+      },
+      {
+        title: "3: fmt",
+        body: `fmt is Go's standard package for formatted I/O. It is used to print text and format strings.\n\nexample:\n\nfmt.Println("Hello!")       // prints with newline\nfmt.Printf("Name: %s\\n", "Jackson")  // formatted print\nfmt.Sprintf("Score: %d", 10) // returns a string`
+      },
+      {
+        title: "4: Variables",
+        body: `A variable stores a value that can change. Use var or the short := syntax.\n\nexample:\n\nvar name string = "jackson"\nvar age int = 20\n\n// shorthand (inside a function)\ncity := "Edinburgh"`
+      },
+      {
+        title: "5: Constants",
+        body: `A constant is a value that cannot be changed after it is set. Use the const keyword.\n\nexample:\n\nconst Pi = 3.14159\nconst Language = "Go"`
+      },
+      {
+        title: "6: Integers and Floats",
+        body: `int holds whole numbers. float64 holds numbers with a decimal point.\n\nexample:\n\nvar x int = 10\nvar y float64 = 3.14\n\nsum := x + 5\narea := y * 2.0`
+      },
+      {
+        title: "7: Strings",
+        body: `Strings are sequences of characters enclosed in double quotes.\n\nexample:\n\nvar greeting string = "Hello, Go!"\n\n// concatenation\nfull := "Hello, " + "World!"\n\n// length\nfmt.Println(len(full)) // 13`
+      },
+      {
+        title: "8: Booleans",
+        body: `A bool holds either true or false. Used for conditions and logic.\n\nexample:\n\nvar isReady bool = true\nvar done = false\n\nfmt.Println(isReady && !done) // true`
+      },
+      {
+        title: "9: Functions",
+        body: `Functions group reusable logic. Go functions can return multiple values.\n\nexample:\n\nfunc add(x, y int) int {\n\treturn x + y\n}\n\nfunc divide(a, b float64) (float64, error) {\n\tif b == 0 {\n\t\treturn 0, errors.New("cannot divide by zero")\n\t}\n\treturn a / b, nil\n}`
+      },
+      {
+        title: "10: If / Else",
+        body: `if and else let you run code based on a condition.\n\nexample:\n\nif x > 10 {\n\tfmt.Println("big")\n} else if x == 10 {\n\tfmt.Println("exactly ten")\n} else {\n\tfmt.Println("small")\n}\n\n// if with a short statement\nif n := 42; n%2 == 0 {\n\tfmt.Println("even")\n}`
+      },
+      {
+        title: "11: For Loops",
+        body: `Go has only one loop keyword: for. It covers while-style and range loops too.\n\nexample:\n\n// standard loop\nfor i := 0; i < 5; i++ {\n\tfmt.Println(i)\n}\n\n// while-style\nfor x > 0 {\n\tx--\n}\n\n// range over a slice\nfor i, v := range []int{10, 20, 30} {\n\tfmt.Println(i, v)\n}`
+      },
+      {
+        title: "12: Switch",
+        body: `switch is a cleaner way to write multiple if/else branches.\n\nexample:\n\nswitch day {\ncase "Monday":\n\tfmt.Println("start of the week")\ncase "Friday":\n\tfmt.Println("end of the week")\ndefault:\n\tfmt.Println("midweek")\n}`
+      },
+      {
+        title: "13: Arrays and Slices",
+        body: `An array has a fixed size. A slice is a flexible view into an array.\n\nexample:\n\n// array\nvar a [3]int = [3]int{1, 2, 3}\n\n// slice (most common)\nnums := []int{10, 20, 30}\nnums = append(nums, 40)\nfmt.Println(nums[0]) // 10`
+      },
+      {
+        title: "14: Maps",
+        body: `A map stores key-value pairs. Like a dictionary.\n\nexample:\n\nscores := map[string]int{\n\t"jackson": 95,\n\t"alice":   87,\n}\n\nscores["bob"] = 78\n\nval, ok := scores["alice"]\nif ok {\n\tfmt.Println(val) // 87\n}`
+      },
+      {
+        title: "15: Structs",
+        body: `A struct groups related fields together into a custom type.\n\nexample:\n\ntype Person struct {\n\tName string\n\tAge  int\n}\n\np := Person{Name: "Jackson", Age: 20}\nfmt.Println(p.Name) // Jackson`
+      },
+      {
+        title: "16: Pointers",
+        body: `A pointer holds the memory address of a value. Use & to get the address and * to read the value.\n\nexample:\n\nx := 10\np := &x   // p points to x\n*p = 20   // changes x through the pointer\nfmt.Println(x) // 20`
+      },
+      {
+        title: "17: Error Handling",
+        body: `Go handles errors by returning them as values. Always check the error.\n\nexample:\n\nimport "errors"\n\nfunc divide(a, b float64) (float64, error) {\n\tif b == 0 {\n\t\treturn 0, errors.New("division by zero")\n\t}\n\treturn a / b, nil\n}\n\nresult, err := divide(10, 0)\nif err != nil {\n\tfmt.Println("Error:", err)\n}`
+      },
+      {
+        title: "18: Defer",
+        body: `defer delays a function call until the surrounding function returns. Great for cleanup.\n\nexample:\n\nfunc readFile() {\n\tf, _ := os.Open("file.txt")\n\tdefer f.Close() // runs when readFile returns\n\n\t// read from f...\n}`
+      },
+      {
+        title: "19: Goroutines",
+        body: `A goroutine is a lightweight thread managed by Go. Start one with the go keyword.\n\nexample:\n\nfunc sayHello() {\n\tfmt.Println("Hello from goroutine")\n}\n\ngo sayHello() // runs concurrently\nfmt.Println("main continues")`
+      },
+      {
+        title: "20: Channels",
+        body: `Channels let goroutines communicate safely. Send with <- and receive with <-.\n\nexample:\n\nch := make(chan int)\n\ngo func() {\n\tch <- 42 // send\n}()\n\nval := <-ch // receive\nfmt.Println(val) // 42`
+      },
+      {
+        title: "End: That's a wrap!",
+        body: `This is all of what I've learned so far.\n\nIf you have any questions just ask me on GitHub as an issue.`
+      }
+    ];
+
+    let current = 0;
+
+    const display   = document.getElementById('step-display');
+    const gopher    = document.getElementById('gopher-wrap');
+    const barInner  = document.getElementById('progress-bar-inner');
+    const barLabel  = document.getElementById('progress-label');
+    const btnPrev   = document.getElementById('btn-prev');
+    const btnNext   = document.getElementById('btn-next');
+
+    function render() {
+      const s = steps[current];
+      display.innerHTML = `<strong>${s.title}</strong>\n\n${s.body}`;
+      const pct = ((current + 1) / steps.length) * 100;
+      barInner.style.width = pct + '%';
+      barLabel.textContent = `Step ${current + 1} of ${steps.length}`;
+      gopher.style.display = current === 0 ? 'flex' : 'none';
+      btnPrev.disabled = current === 0;
+      btnNext.disabled = current === steps.length - 1;
+    }
+
+    btnNext.addEventListener('click', () => { if (current < steps.length - 1) { current++; render(); } });
+    btnPrev.addEventListener('click', () => { if (current > 0) { current--; render(); } });
+
+    render();
+  </script>
+
+
+</body></html>

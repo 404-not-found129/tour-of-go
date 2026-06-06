@@ -1,50 +1,54 @@
-Jackson's Terminal Tour of Go
-A lightweight, terminal-based introduction to the Go programming language. This project serves as a quick-reference guide and interactive learning tool, inspired by the official Tour of Go.
+Jackson's Tour of Go
 
-📝 Overview
-This program prints out foundational Go concepts directly to the terminal, making it easy to read and understand the basics of the language at a glance. It is designed for beginners who want a quick refresher on Go syntax without leaving the command line.
+A lightweight, GUI-based introduction to the Go programming language. Inspired by the official Tour of Go (https://go.dev/tour).
 
-Concepts Covered:
+## Overview
 
-Variables: Understanding how to define and manipulate data.
+This app walks through 20 Go concepts one step at a time using a simple Fyne window with Back/Next navigation and a progress bar.
 
-Constants: Working with unchanging values.
+Concepts covered:
 
-Integers (int): Basic number types without decimals.
+- Packages
+- fmt
+- Variables and Constants
+- Integers, Floats, Strings, Booleans
+- Functions
+- If / Else
+- For Loops
+- Switch
+- Arrays and Slices
+- Maps
+- Structs
+- Pointers
+- Error Handling
+- Defer
+- Goroutines and Channels
 
-Functions: How to structure instructions (like func main() and custom functions).
+## Live Web Version
 
-Packages: A brief introduction to the default fmt package used for formatted I/O.
+A browser-based version is available at: https://jackson-tour-of-go.netlify.app
 
-🚀 How to Run
-Since this is a standard Go application, you can run it easily from your terminal.
+## How to Run
 
-Prerequisites:
-You will need the Go compiler installed on your system. If you haven't installed it yet, you can grab it from your package manager (e.g., sudo pacman -S go).
+Prerequisites: Go installed (`sudo pacman -S go` on Arch).
 
-Execution:
-
-Clone or download this repository.
-
-Open your terminal and navigate to the directory containing main.go.
-
-Run the following command to compile and execute the program on the fly:
-
-Bash
+```bash
 go run tour.go
-Alternatively, if you want to build an executable binary:
+```
 
-Bash
-go build -o tour-of-go tour.tour-of-go
+Or build a binary:
+
+```bash
+go build -o tour-of-go tour.go
 ./tour-of-go
-🛠️ Built With
-Go - The programming language used.
+```
 
-Vim / Konsole - Developed in a Linux terminal environment.
+## Built With
 
-💡 Motivation
-This was built as a personal project to solidify core Go concepts and create an easy-to-read reference guide right in the terminal with vim
+- Go + Fyne (GUI toolkit)
+- Vim on Arch Linux
 
-📄 Sources
-https://docs.fyne.io/
-https://stackoverflow.com/questions/77975268/how-to-change-the-background-color-in-fyne-golang-gui
+## Sources
+
+- https://go.dev/tour
+- https://docs.fyne.io/
